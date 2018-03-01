@@ -17,9 +17,9 @@
 void do_stats(bst *address_book)
 {
   printf("Statistics of current address book:\n");
-  printf("* entries in address book:      %d\n", 
+  printf("* entries in address book:      %d\n",
 	 bst_num_entries(address_book));
-  printf("* height of binary search tree: %d\n\n", 
+  printf("* height of binary search tree: %d\n\n",
 	 bst_height(address_book));
 }
 
@@ -30,8 +30,8 @@ void do_stats(bst *address_book)
 bst *do_read(char *infile)
 {
   vcard *c;
-  char buf0[BUFFER_SIZE], buf1[BUFFER_SIZE], 
-       buf2[BUFFER_SIZE], buf3[BUFFER_SIZE], 
+  char buf0[BUFFER_SIZE], buf1[BUFFER_SIZE],
+       buf2[BUFFER_SIZE], buf3[BUFFER_SIZE],
        buf4[BUFFER_SIZE];
   bst *address_book = NULL;
   FILE *f = fopen(infile,"r");
@@ -41,7 +41,7 @@ bst *do_read(char *infile)
   }
   while (!feof(f)) {
     /* this particular file format is baked in */
-    fscanf(f,"%s\t%s\t%s\t%s\t%s\n",buf0,buf1,buf2,buf3,buf4);    
+    fscanf(f,"%s\t%s\t%s\t%s\t%s\n",buf0,buf1,buf2,buf3,buf4);
     c = vcard_new(buf0,buf1,buf2,buf3,buf4);
     if (address_book) {
       int i = bst_insert(address_book,c);
@@ -72,11 +72,11 @@ void do_prefix(const char* prefix, bst *address_book)
 void do_lookup(char *cnet, bst *address_book)
 {
   int n_comparisons = 0;
-  vcard *c = bst_search(address_book, cnet, &n_comparisons);  
+  vcard *c = bst_search(address_book, cnet, &n_comparisons);
   if (c)
-    vcard_show(stdout,c);   
+    vcard_show(stdout,c);
   else
-    printf("cnet \"%s\" not found in current address book.\n", cnet); 
+    printf("cnet \"%s\" not found in current address book.\n", cnet);
   printf("\n(%d comparisons made in search.)\n\n", n_comparisons);
 }
 
@@ -91,7 +91,7 @@ void do_cmd(cmd *c, bst **address_book, int *quit)
   case QUIT:   *quit=1; break;
   case STATS:  do_stats(*address_book); break;
   case PREFIX:   do_prefix(c->arg,*address_book); break;
-  case LOOKUP: do_lookup(c->arg,*address_book);  break;    
+  case LOOKUP: do_lookup(c->arg,*address_book);  break;
   case HELP:   help_text(); break;
   case READ:
     tmp = do_read(c->arg);
@@ -108,15 +108,15 @@ void do_cmd(cmd *c, bst **address_book, int *quit)
     /* this shouldn't happen, ever */
     fprintf(stderr,"BUG (do_cmd): bad tag in cmd (%d)\n",c->name);
     exit(1);
-  }    
+  }
 }
 
 /* ===================================== */
 /* === administer the adrbook shell  === */
 /* ===================================== */
 
-/* trim_newline: duplicate the string and replace the newline 
- * at the end with '\0' if it exists. 
+/* trim_newline: duplicate the string and replace the newline
+ * at the end with '\0' if it exists.
  */
 char *trim_newline(char *s)
 {

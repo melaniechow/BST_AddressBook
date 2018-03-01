@@ -12,12 +12,13 @@ const char *_vcard_todo_format = "TODO [vcard]: %s\nhalting\n";
 vcard* vcard_new(const char* cnet, const char* email,
                  const char* fname, const char* lname, const char* tel)
 {
-        vcard* vcard=malloc(sizeof(vcard));
-        vcard->cnet=strdup(cnet);
-        vcard->email=strdup(email);
-        vcard->fname=strdup(fname);
-        vcard->lname=strdup(lname);
-        vcard->tel=strdup(tel);
+        vcard* vcard_ret=malloc(sizeof (vcard));
+        vcard_ret->cnet=strdup(cnet);
+        vcard_ret->email=strdup(email);
+        vcard_ret->fname=strdup(fname);
+        vcard_ret->lname=strdup(lname);
+        vcard_ret->tel=strdup(tel);
+        return vcard_ret;
 }
 
 /* vcard_free : free vcard and the strings it points to
