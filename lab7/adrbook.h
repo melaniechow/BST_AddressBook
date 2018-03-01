@@ -74,7 +74,7 @@ vcard* bst_search_HELP(bst* t, const char* cnet, int* n_comparisons, int counter
 /* Return the number of cnets displayed. */
 unsigned int bst_prefix_show(FILE* f, bst* t, const char* prefix);
 unsigned int bst_prefix_helper(FILE* f, bst* t, const char * prefix,
-                                int len, unsigned int num_prefixes);
+                                int len/*, unsigned int num_prefixes*/);
 
 /* Free the bst and all vcards as well. */
 void bst_free(bst* t);
