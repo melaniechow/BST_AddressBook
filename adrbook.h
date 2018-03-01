@@ -66,12 +66,15 @@ unsigned int bst_height(bst* t);
 /* comparisons made during the search. */
 /* The program must not assume that *n_comparisons is 0. */
 vcard* bst_search(bst* t, const char* cnet, int* n_comparisons);
+vcard* bst_search_HELP(bst* t, const char* cnet, int* n_comparisons, int counter);
 
 /* Show all cnets that start with given prefix. */
 /* Show cnets one per line in alphabetical order. */
 /* Do not traverse parts of the tree you know to be irrelevant. */
 /* Return the number of cnets displayed. */
 unsigned int bst_prefix_show(FILE* f, bst* t, const char* prefix);
+unsigned int bst_prefix_helper(FILE* f, bst* t, const char * prefix,
+                                int len, unsigned int num_prefixes);
 
 /* Free the bst and all vcards as well. */
 void bst_free(bst* t);
