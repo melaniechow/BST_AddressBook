@@ -218,5 +218,6 @@ void bst_free(bst* t)
         vcard_free(t->vc);
         bst_free(t->lsub);
         bst_free(t->rsub);
+	free(t);
     }
 }
